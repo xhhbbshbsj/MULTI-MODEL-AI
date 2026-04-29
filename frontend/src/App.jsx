@@ -38,7 +38,7 @@ function App() {
       // 🔥 The crucial Session ID for memory!
       formData.append('sessionId', sessionId);
 
-      // 🔥 Switched to the LIVE Render Cloud Server
+      // 🔥 Switched to the LIVE Render Cloud
       const response = await axios.post('https://multi-model-ai-uiw4.onrender.com/api/v1/engine/process', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
