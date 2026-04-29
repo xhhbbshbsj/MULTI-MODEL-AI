@@ -38,8 +38,8 @@ function App() {
       // 🔥 The crucial Session ID for memory!
       formData.append('sessionId', sessionId);
 
-      // 🔥 Switched back to Axios for standard JSON responses
-      const response = await axios.post('http://localhost:5000/api/v1/engine/process', formData, {
+      // 🔥 Switched to the LIVE Render Cloud Server
+      const response = await axios.post('https://multi-model-ai-uiw4.onrender.com/api/v1/engine/process', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
@@ -107,8 +107,8 @@ function App() {
               {logs.map((log, i) => (
                 <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} key={i} className="flex gap-3">
                   <span className={`shrink-0 ${log.role === 'system' ? 'text-emerald-500' :
-                      log.role === 'error' ? 'text-red-500' :
-                        log.role === 'engine' ? 'text-indigo-400' : 'text-slate-500'
+                    log.role === 'error' ? 'text-red-500' :
+                      log.role === 'engine' ? 'text-indigo-400' : 'text-slate-500'
                     }`}>
                     [{log.role.toUpperCase()}]
                   </span>
@@ -123,13 +123,13 @@ function App() {
               {/* Image & Document Upload Button */}
               <label className={`cursor-pointer transition-colors ${selectedImage ? 'text-emerald-400' : 'text-slate-400 hover:text-indigo-400'}`}>
                 <ImageIcon size={22} />
-                <input 
-                    type="file" 
-                    className="hidden" 
-                    // 🔥 NEW: Unlock to allow text, csv, and code files!
-                    accept="image/*, text/*, .js, .json, .csv" 
-                    onChange={handleImageSelect} 
-                    disabled={isLoading} 
+                <input
+                  type="file"
+                  className="hidden"
+                  // 🔥 NEW: Unlock to allow text, csv, and code files!
+                  accept="image/*, text/*, .js, .json, .csv"
+                  onChange={handleImageSelect}
+                  disabled={isLoading}
                 />
               </label>
 
